@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Author } from "@/context/AuthorContext";
+import { useAuthors } from "@/context/AuthorContext";
 
 type Props = {
   author: Author;
@@ -11,12 +12,15 @@ type Props = {
 };
 
 export default function AuthorCard({ author, onDelete, onEdit }: Props) {
+  const { toggleFavorite } = useAuthors();
   const router = useRouter();
   const handleEdit = () => {
     if (onEdit) return onEdit(author.id);
     router.push(`/authors/${author.id}/edit`);
   };
-
+  const handleFavorite= () => {
+    toggleFavorite(author.id)
+  }
   return (
     <article className="w-[320px] flex flex-col rounded-xl overflow-hidden border border-[#000000] bg-[#000000] shadow-sm">
       <div className="relative w-full h-44 bg-[#000000]">
@@ -58,6 +62,13 @@ export default function AuthorCard({ author, onDelete, onEdit }: Props) {
               aria-label="Eliminar"
             >
               Eliminar
+            </button>
+            <button
+              onClick={handleFavorite}
+              className="px-3 py-1 rounded-md bg-slate-800/50 text-slate-100 text-sm hover:bg-slate-700"
+              aria-label="Favorito"
+            >
+              {author.favorite? "favorito": "no favorito"}
             </button>
           </div>
         </div>

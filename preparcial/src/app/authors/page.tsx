@@ -29,6 +29,12 @@ export default function AuthorsListPage() {
           >
             Nuevo autor
           </button>
+          <button
+            onClick={() => router.push("/authors/favorite")}
+            className="px-3 py-2 rounded-md bg-[#000000] text-white font-semibold shadow-sm hover:opacity-95"
+          >
+            Favoritos
+          </button>
         </div>
       </div>
 

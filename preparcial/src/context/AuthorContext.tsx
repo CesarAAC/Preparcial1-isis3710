@@ -7,6 +7,7 @@ export type Author = {
   birthDate?: string;
   description?: string;
   image?: string;
+  favorite:boolean
 };
 
 type AuthorsContextValue = {
@@ -14,6 +15,7 @@ type AuthorsContextValue = {
   addAuthor: (a: Omit<Author, "id">) => Author;
   updateAuthor: (id: number, patch: Partial<Author>) => Author | null;
   deleteAuthor: (id: number) => boolean;
+  toggleFavorite: (id:number)=> void;
 };
 
 const AuthorsContext = createContext<AuthorsContextValue | undefined>(undefined);
@@ -29,7 +31,14 @@ export const AuthorsProvider: React.FC<{ children: React.ReactNode }> = ({ child
       .then((res) => {
         if (!res.ok) {
           console.warn("API no disponible, se mantiene lista vacía");
-          return null;
+          return {
+            id: 1,
+    name: "ejemplo",
+  birthDate: "12-01-2004",
+  description: "description ejemplo",
+  image: "ejemplo",
+  favorite:true
+          };
         }
         return res.json();
       })
@@ -41,6 +50,7 @@ export const AuthorsProvider: React.FC<{ children: React.ReactNode }> = ({ child
           birthDate: a.birthDate ?? "",
           description: a.description ?? "",
           image: a.image ?? "",
+          favorite: a.favorite,
         }));
         setAuthors(reduced);
       })
@@ -82,7 +92,21 @@ export const AuthorsProvider: React.FC<{ children: React.ReactNode }> = ({ child
     return true;
   };
 
-  return <AuthorsContext.Provider value={{ authors, addAuthor, updateAuthor, deleteAuthor }}>{children}</AuthorsContext.Provider>;
+  const toggleFavorite = (id: number): Author | null => {
+    let updated: Author | null = null;
+    setAuthors((prev) =>
+      prev.map((it) => {
+        if (it.id === id) {
+          updated = { ...it, favorite: !it.favorite };
+          return updated;
+        }
+        return it;
+      })
+    );
+    return updated;
+  };
+
+  return <AuthorsContext.Provider value={{ authors, addAuthor, updateAuthor, deleteAuthor, toggleFavorite }}>{children}</AuthorsContext.Provider>;
 };
 
 export const useAuthors = (): AuthorsContextValue => {

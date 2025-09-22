@@ -48,6 +48,7 @@ export default function AuthorForm({ initial = null, redirectAfterSave = null }:
           birthDate: birthDate || undefined,
           image: image || undefined,
           description: description || undefined,
+          favorite: false
         });
       }
       if (redirectAfterSave) router.push(redirectAfterSave);
