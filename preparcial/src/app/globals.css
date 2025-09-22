@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:root{
+  --accent-from: #7c3aed;
+  --accent-to: #06b6d4;
+}
+
+html,body,#__next{height:100%}
+
