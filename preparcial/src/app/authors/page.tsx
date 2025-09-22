@@ -19,11 +19,14 @@ export default function AuthorsListPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Autores</h1>
-          <p className="text-sm text-slate-400">Gestiona la lista de autores</p>
+          <p className="text-sm text-[#000000]">Gestiona la lista de autores</p>
         </div>
 
         <div>
-          <button onClick={() => router.push("/Authors/new")} className="px-4 py-2 rounded-md bg-gradient-to-r from-violet-600 to-cyan-400 text-white font-semibold">
+          <button
+            onClick={() => router.push("/authors/new")}
+            className="px-3 py-2 rounded-md bg-[#000000] text-white font-semibold shadow-sm hover:opacity-95"
+          >
             Nuevo autor
           </button>
         </div>
@@ -31,7 +34,7 @@ export default function AuthorsListPage() {
 
       <div className="flex flex-wrap justify-center gap-6">
         {authors.length === 0 ? (
-          <div className="text-slate-400">No hay autores aún.</div>
+          <div className="text-[#000000]">No hay autores aún.</div>
         ) : (
           authors.map((a) => (
             <div key={a.id} className="flex-shrink-0">

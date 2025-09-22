@@ -18,8 +18,8 @@ export default function AuthorCard({ author, onDelete, onEdit }: Props) {
   };
 
   return (
-    <article className="w-[320px] flex flex-col rounded-xl overflow-hidden border border-slate-800 bg-slate-900/40 shadow-sm">
-      <div className="relative w-full h-44 bg-slate-800/20">
+    <article className="w-[320px] flex flex-col rounded-xl overflow-hidden border border-[#000000] bg-[#000000] shadow-sm">
+      <div className="relative w-full h-44 bg-[#000000]">
         {author.image ? (
           <Image
             src={author.image}

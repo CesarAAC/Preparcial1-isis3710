@@ -60,41 +60,41 @@ export default function AuthorForm({ initial = null, redirectAfterSave = null }:
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-slate-900/30 border border-slate-800 rounded-lg p-6">
+    <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-[#ffffff] border border-[#000000] rounded-lg p-6">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold">{isEdit ? "Editar autor" : "Crear autor"}</h3>
-        <button type="button" onClick={() => router.back()} className="text-sm text-slate-400 hover:underline">
+        <button type="button" onClick={() => router.back()} className="text-sm text-[#000000] hover:underline">
           Volver
         </button>
       </div>
 
       <div className="grid grid-cols-1 gap-4">
         <label className="flex flex-col">
-          <span className="text-sm text-slate-400 mb-1">Nombre *</span>
-          <input value={name} onChange={(e) => setName(e.target.value)} className="px-3 py-2 rounded-md bg-slate-800 border border-slate-700 text-slate-100" required />
+          <span className="text-sm text-[#000000] mb-1">Nombre *</span>
+          <input value={name} onChange={(e) => setName(e.target.value)} className="px-3 py-2 rounded-md bg-[#ffffff] text-[#000000] border-1 border-[#000000]" required />
         </label>
 
         <label className="flex flex-col">
-          <span className="text-sm text-slate-400 mb-1">Fecha de nacimiento</span>
-          <input type="date" value={birthDate ?? ""} onChange={(e) => setBirthDate(e.target.value)} className="px-3 py-2 rounded-md bg-slate-800 border border-slate-700 text-slate-100" />
+          <span className="text-sm text-[#000000] mb-1">Fecha de nacimiento</span>
+          <input type="date" value={birthDate ?? ""} onChange={(e) => setBirthDate(e.target.value)} className="px-3 py-2 rounded-md bg-[#ffffff] text-[#000000] border-1 border-[#000000]" />
         </label>
 
         <label className="flex flex-col">
-          <span className="text-sm text-slate-400 mb-1">URL imagen</span>
-          <input value={image ?? ""} onChange={(e) => setImage(e.target.value)} className="px-3 py-2 rounded-md bg-slate-800 border border-slate-700 text-slate-100" />
+          <span className="text-sm text-[#000000] mb-1">URL imagen</span>
+          <input value={image ?? ""} onChange={(e) => setImage(e.target.value)} className="px-3 py-2 rounded-md bg-[#ffffff] text-[#000000] border-1 border-[#000000]" />
         </label>
 
         <label className="flex flex-col">
-          <span className="text-sm text-slate-400 mb-1">Descripción</span>
-          <textarea value={description ?? ""} onChange={(e) => setDescription(e.target.value)} className="px-3 py-2 rounded-md bg-slate-800 border border-slate-700 text-slate-100 min-h-[120px]" />
+          <span className="text-sm text-[#000000] mb-1">Descripción</span>
+          <textarea value={description ?? ""} onChange={(e) => setDescription(e.target.value)} className="px-3 py-2 rounded-md bg-[#ffffff] text-[#000000] min-h-[120px] border-1 border-[#000000]" />
         </label>
       </div>
 
       <div className="mt-4 flex gap-3">
-        <button type="submit" disabled={submitting} className="px-4 py-2 rounded-md bg-gradient-to-r from-violet-600 to-cyan-400 text-white font-semibold">
+        <button type="submit" disabled={submitting} className="px-4 py-2 rounded-md bg-[#000000] text-white font-semibold">
           {submitting ? (isEdit ? "Guardando..." : "Creando...") : isEdit ? "Guardar cambios" : "Crear autor"}
         </button>
-        <button type="button" onClick={() => router.push("/authors")} className="px-4 py-2 rounded-md border border-slate-700 text-slate-100">
+        <button type="button" onClick={() => router.push("/authors")} className="px-4 py-2 rounded-md text-[#000000]">
           Cancelar
         </button>
       </div>
