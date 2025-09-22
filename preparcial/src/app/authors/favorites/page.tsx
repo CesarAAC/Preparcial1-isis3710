@@ -24,10 +24,10 @@ export default function FavoriteAuthorsListPage() {
 
         <div>
           <button
-            onClick={() => router.push("/authors/new")}
+            onClick={() => router.push("/authors")}
             className="px-3 py-2 rounded-md bg-[#000000] text-white font-semibold shadow-sm hover:opacity-95"
           >
-            Nuevo autor
+            Volver
           </button>
         </div>
       </div>
